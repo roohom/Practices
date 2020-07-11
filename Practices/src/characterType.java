@@ -5,6 +5,10 @@
  * @Date: 2020/7/11 17:41
  * @Software: IntelliJ IDEA
  */
+
+
+
+
 public class characterType {
     public static void main(String[] args){
         // 声明一个int类型变量 范围是21亿
@@ -23,7 +27,4 @@ public class characterType {
         long l1 = 210000000000000L;
         System.out.println(l1);
         }
-
-
-
 }
