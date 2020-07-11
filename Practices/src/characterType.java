@@ -23,4 +23,7 @@ public class characterType {
         long l1 = 210000000000000L;
         System.out.println(l1);
         }
+
+
+
 }
