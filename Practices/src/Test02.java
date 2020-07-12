@@ -5,6 +5,8 @@
  * @Date: 2020/7/11 17:18
  * @Software: IntelliJ IDEA
  */
+
+
 public class Test02 {
      public static void main(String[] args){
          int age;
