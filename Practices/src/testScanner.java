@@ -7,8 +7,8 @@
  */
 
 
-
-
+import javax.sound.midi.Soundbank;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class testScanner {
@@ -23,6 +23,12 @@ public class testScanner {
 
         //输出接收到参数
         System.out.println("你输入的是"+s1);
+
+        Scanner sc1 = new Scanner(System.in);
+        String s2 = sc1.nextLine();
+        System.out.println("你又输入了:"+s2);
+
+
 
     }
 }
