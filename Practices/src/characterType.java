@@ -8,7 +8,6 @@
 
 
 
-
 public class characterType {
     public static void main(String[] args){
         // 声明一个int类型变量 范围是21亿
