@@ -12,10 +12,11 @@ public class threeDigitNumber {
         Scanner sc = new Scanner(System.in);
         System.out.println("请输入一个三位数:");
         int a = sc.nextInt();
-        int l = a%10;
-        int m = a/10%10;
-        int h = a/100%10;
-        System.out.println(a+"的百位是:"+h+",十位是:"+m+",个位是:"+l);
+        int l = a%10; //个位
+        int m = a/10%10; //十位
+        int h = a/100%10; //百位
+        System.out.println("数字"+a+"的个位是"+l+",十位是"+m+",百位是"+h);
 
     }
 }
+

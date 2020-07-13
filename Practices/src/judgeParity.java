@@ -15,7 +15,6 @@ public class judgeParity {
         if(num % 2==0)
         {
             System.out.println(num+"是一个偶数！");
-
         }
         else
             {
