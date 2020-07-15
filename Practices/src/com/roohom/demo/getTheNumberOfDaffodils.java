@@ -34,5 +34,22 @@ public class getTheNumberOfDaffodils {
             System.out.println("你输入的这是啥玩意儿，不是水仙花数啊！");
         }
 
+
+        for(int i=100;i<=999;i++)
+        {
+            int m = i/100%10; //百位
+            int n = i/10%10; //十位
+            int p = i%10;  //个位
+
+            //利用公式判断该数的每一位的立方和是不是等于该数
+            if (m*m*m + n*n*n + p*p*p == i)
+            {
+                System.out.println(i+"是一个正经的水仙花数鸭！");
+            }
+//            else
+//            {
+//                System.out.println(i+"是啥玩意儿，不是水仙花数啊！");
+//            }
+        }
     }
 }

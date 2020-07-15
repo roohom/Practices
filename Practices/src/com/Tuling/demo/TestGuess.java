@@ -13,6 +13,7 @@ import java.util.Scanner;
 public class TestGuess {
     public static void main(String[] args) {
         //随机生成数字
+        System.out.println("我已经随机生成了一个1~100之间的随机数，你可以来猜一猜:");
         Random rd = new Random();
         int num = rd.nextInt(100)+1;
         System.out.println(num);
