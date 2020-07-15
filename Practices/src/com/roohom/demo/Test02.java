@@ -1,7 +1,9 @@
+package com.roohom.demo;
+
 /**
- * @ClassName: Test02
+ * @ClassName: com.roohom.demo.Test02
  * @Author: Roohom
- * @File: Test02
+ * @File: com.roohom.demo.Test02
  * @Date: 2020/7/11 17:18
  * @Software: IntelliJ IDEA
  */

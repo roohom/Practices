@@ -1,5 +1,5 @@
-/**
- * ClassName: modHun
+package com.roohom.demo; /**
+ * ClassName: com.roohom.demo.modHun
  * Author: Roohom
  * Function: 对一个三位数分别判断其个十百位并打印输出
  * Date: 2020/7/13 16:13

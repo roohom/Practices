@@ -1,9 +1,11 @@
+package com.roohom.demo;
+
 import java.util.Scanner;
 
 /**
- * ClassName: testScannerDemo
+ * ClassName: com.roohom.demo.testScannerDemo
  * Author: Roohom
- * File: testScannerDemo
+ * File: com.roohom.demo.testScannerDemo
  * Date: 2020/7/12 21:28
  * Software: IntelliJ IDEA
  */

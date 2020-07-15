@@ -1,7 +1,7 @@
-/**
- * ClassName: testScanner
+package com.roohom.demo; /**
+ * ClassName: com.roohom.demo.testScanner
  * Author: Roohom
- * File: testScanner
+ * File: com.roohom.demo.testScanner
  * Date: 2020/7/12 11:25
  * Software: IntelliJ IDEA
  */

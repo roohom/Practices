@@ -118,14 +118,41 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
 
 - 键盘录入
 试用步骤:
-    - 导入Scanner包 import java.util.Scanner;
-    - 创建Scanner对象,Scanner sc = new Scanner(System.in);
-    - 获取键盘录入的数据:
+    - 1.导入Scanner包 import java.util.Scanner;
+    - 2.创建Scanner对象,Scanner sc = new Scanner(System.in);
+    - 3.获取键盘录入的数据:
         如:String str = sc.next(); 
         如:int num = sc.nextInt();
     
-    
-    
+### 分支结构
+- switch语句
+    - switch之后的括号里可以接收变量、常量和表达式
+    需要确保其类型必须是byte、short、int、char、String或枚举
+    - default可以书写在任何位置，但除了末尾的位置都必须写break
+    - case穿透现象
+    - **假设表达式的值 = 值1, 则执行完语句体1后, 不会判断第二个case, 直接执行语句体2**
+        ~~~java
+        witch(表达式){
+            case 值1: 	
+                语句体1;	//假设表达式的值 = 值1, 则执行完语句体1后, 不会判断第二个case, 直接执行语句体2;
+            case 值2:
+                语句体2;
+                break;
+            case 值3:
+                语句体3;
+                break;
+                  ...    //根据需求, 可以写多组case.
+            default:	
+                语句体n;
+                break;
+      }
+        ~~~
+    - 案例 SwitchPenetrate.java
+### 循环
+- 三种循环
+    - for循环
+    - while循环
+    - do...while循环   
     
     
     

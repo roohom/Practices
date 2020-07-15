@@ -1,7 +1,9 @@
+package com.roohom.demo;
+
 /**
- * ClassName: VarDemo
+ * ClassName: com.roohom.demo.VarDemo
  * Author: Roohom
- * File: VarDemo
+ * File: com.roohom.demo.VarDemo
  * Date: 2020/7/12 15:45
  * Software: IntelliJ IDEA
  */

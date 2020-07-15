@@ -1,7 +1,9 @@
+package com.roohom.demo;
+
 /**
- * @ClassName: characterType
+ * @ClassName: com.roohom.demo.characterType
  * @Author: Roohom
- * @File: characterType
+ * @File: com.roohom.demo.characterType
  * @Date: 2020/7/11 17:41
  * @Software: IntelliJ IDEA
  */

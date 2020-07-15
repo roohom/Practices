@@ -1,9 +1,11 @@
+package com.roohom.demo;
+
 import java.util.Scanner;
 
 /**
- * ClassName: judgeParity
+ * ClassName: com.roohom.demo.judgeParity
  * Author: Roohom
- * File: judgeParity
+ * File: com.roohom.demo.judgeParity
  * Date: 2020/7/12 21:48
  * Software: IntelliJ IDEA
  */

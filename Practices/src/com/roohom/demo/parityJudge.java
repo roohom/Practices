@@ -1,5 +1,5 @@
-/**
- * ClassName: parityJudge
+package com.roohom.demo; /**
+ * ClassName: com.roohom.demo.parityJudge
  * Author: Roohom
  * Function:
  * Date: 2020/7/13 17:11

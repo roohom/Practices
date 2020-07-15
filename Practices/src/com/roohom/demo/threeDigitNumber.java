@@ -1,9 +1,11 @@
+package com.roohom.demo;
+
 import java.util.Scanner;
 
 /**
- * ClassName: threeDigitNumber
+ * ClassName: com.roohom.demo.threeDigitNumber
  * Author: Roohom
- * File: threeDigitNumber
+ * File: com.roohom.demo.threeDigitNumber
  * Date: 2020/7/12 21:33
  * Software: IntelliJ IDEA
  */
