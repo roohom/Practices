@@ -29,8 +29,7 @@ public class hw09 {
         {
             System.out.println("请输入一个字母:");
             Scanner sc = new Scanner(System.in);
-            char input =sc.next().charAt(0);
-            char a = input;
+            char a = sc.next().charAt(0);
             if (a>num)
             {
                 System.out.println("太大了！");
