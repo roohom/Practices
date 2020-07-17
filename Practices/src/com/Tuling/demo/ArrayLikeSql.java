@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * ClassName: ArrayLike
  * Author: Roohom
- * Function:
+ * Function:数组的增删改查
  * Date: 2020/7/17 11:43
  * Software: IntelliJ IDEA
  */
@@ -43,6 +43,7 @@ public class ArrayLikeSql {
         System.out.println(Arrays.toString(arr));
         System.out.println("----------------------");
 
+        //查
         //查找数组中是否有元素是20，若存在则打印下标并将钙元素设置为300
         for (int n=0;n<arr.length;n++)
         {
