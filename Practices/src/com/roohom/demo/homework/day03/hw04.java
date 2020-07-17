@@ -1,4 +1,4 @@
-package com.roohom.demo.homework_day03;
+package com.roohom.demo.homework.day03;
 
 /**
  * ClassName: hw04
