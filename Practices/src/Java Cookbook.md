@@ -192,7 +192,12 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
     ~~~java
     int num = (int)(Math.random()*100+1); //生成一个1-100之间的随机整数
     ~~~ 
-    
+- 在java中如果使用Math.random()生成随机数  
+如果是要生成[10,100]的随机数， (int)(Math.random()*91+10)   
+提取其中的(**公式**) :将Math.random()用MR代替。
+如果是要求[a,b]范围，则是MR*((b-a)+1)+a  
+如果是[a,b)范围，则是MR*(b-a)+a  
+
 ### 数组
 定义的方式:  
 举例:
@@ -205,7 +210,7 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
 
 ### Java程序的内存划分
 - 栈
-    - 作用:存储局部变量，程序要运行的代码
+    - 作用:存储局部变量，程序要运行的代码，局部变量就是定义在方法中的变量，栈中存放的就是方法
     - 特点:先进后出(FILO)
 - 堆
     - 作用:存储使用new关键字，创建出来的内容(即:对象)
@@ -216,5 +221,32 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
     - 常量存放在常量池中，而常量池就在方法区中
 - 寄存器            
 
-
+### 方法
+- 什么是方法?
+    - 在程序中把一段代码进行抽取并封装，封装为一个具有独立功能的代码块，这块代码起个名称之后就成为“方法”
+    - main()就是一个方法
+    - 方法(method)也叫函数(function),在具体实现上是一样的
+    - public static void main(String[] args),public static是修饰符,void表示没有返回值,main就是方法名,String[] args是参数
     
+- 方法可以传递数据    
+- 方法可以返回结果
+- 好处:提高了代码的**复用率**
+
+  
+- 方法的重载
+    - 同样的方法，不同的参数列表(参数个数、参数类型以及参数的顺序)    
+    - 参数的传递有基本数据类型和引用数据类型
+    - 当传递的参数是基本数据类型，形参的改变对实参没有任何影响
+        ~~~java
+          public static void main(String[] args) {
+                  int number = 100;
+                  System.out.println("调用change方法前：" + number);
+                  change(number);	 //实参.
+                  System.out.println("调用change方法后：" + number);
+              }     
+              public static void change(int number) {	//形参.
+                  number = 200;
+              }    
+        ~~~
+      <font color="red">上面代码在调用change和调用之后number的数值都是200</font>
+      
