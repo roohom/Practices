@@ -207,7 +207,8 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
 - 静态初始化
     - int[] array = new int[]{1,2,3,4,5}   
     - int array[] = {1,2,3,4,5}
-
+- 数组的遍历可以使用for循环，同时java也提供了一个方法来直接打印数组 -> Arrays.toString(arr)
+打印的结果形式是[元素,元素,...]
 ### Java程序的内存划分
 - 栈
     - 作用:存储局部变量，程序要运行的代码，局部变量就是定义在方法中的变量，栈中存放的就是方法
@@ -249,4 +250,18 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
               }    
         ~~~
       <font color="red">上面代码在调用change和调用之后number的数值都是200</font>
-      
+    - 方法中传递的参数类型是引用数据类型时，传递的是地址值(内存中开辟的空间的地址值)，当在方法中对传递的引用类型的参数
+    进行相关操作时，会直接影响实参  
+        ~~~java
+          public static void main(String[] args) {
+                  int[] arr = {10, 20, 30};
+                  System.out.println("调用change方法前：" + arr[1]);
+                  change(arr);
+                  System.out.println("调用change方法后：" + arr[1]);
+              }
+          
+              public static void change(int[] arr) {
+                  arr[1] = 200;
+              }
+        ~~~
+      调用之前打印的是20，调用之后打印的是200
