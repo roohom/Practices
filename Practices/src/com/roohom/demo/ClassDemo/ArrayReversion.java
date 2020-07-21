@@ -11,8 +11,8 @@ public class ArrayReversion {
     static void Reversion(int[] arr)
     {
         //获取数组的中轴，用来作为翻转的基础
-        int CenterAxis=arr.length/2;
-        for (int i = 0; i < CenterAxis; i++) {
+        int centerAxis=arr.length/2;
+        for (int i = 0; i < centerAxis; i++) {
             int temp = arr[i];
             arr[i] = arr[arr.length - 1 - i];
             arr[arr.length - 1 - i] = temp;

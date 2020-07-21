@@ -12,7 +12,18 @@ package com.roohom.demo.ClassDemo;
 
 
 public class ArrayReversionByDichotomy {
-    static void Dichotomy(int[] arr, int head, int tail) {
+
+    //两个位置的元素交换
+    public static void swap(int[] arr,int low, int high)
+    {
+        int temp;
+        temp = arr[low];
+        arr[low] = arr[high];
+        arr[high] = temp;
+    }
+
+
+    public static void Dichotomy(int[] arr, int head, int tail) {
         //如果数组的长度为2,直接将两个值调换位置
         if (tail-head==1)
         {
@@ -31,6 +42,8 @@ public class ArrayReversionByDichotomy {
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,6,7,8,9,0};
         Dichotomy(arr,0,10);
+
+
         for (int i=10;i<arr.length;i++)
         {
             System.out.println(arr[i]);
