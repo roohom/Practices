@@ -1,5 +1,7 @@
 package com.roohom.demo.homework.day08.StrToStrarray;
 
+import java.util.Arrays;
+
 /**
  * ClassName: StrToStrArray
  * Author: Roohom
@@ -11,8 +13,7 @@ public class StrToStrArray {
 
     public static char[] StrToArray(String str)
     {
-        char[] strArray = str.toCharArray();
-        return strArray;
+        return str.toCharArray();
     }
 
     public static void main(String[] args) {
@@ -24,5 +25,6 @@ public class StrToStrArray {
 //        }
         //查看转换后的类型
         System.out.println(StrToArray(str).getClass().toString());
+        System.out.println(Arrays.toString(StrToArray(str)));
     }
 }
