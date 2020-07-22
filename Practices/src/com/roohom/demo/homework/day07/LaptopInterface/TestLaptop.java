@@ -10,8 +10,11 @@ package com.roohom.demo.homework.day07.LaptopInterface;
 public class TestLaptop {
     public static void main(String[] args) {
         Laptop lp = new Laptop() ;
+        Mouse m = new Mouse();
+        Keyboard kb = new Keyboard();
         lp.open();
-        lp.useUSB();
+        lp.useUSB(m);
+        lp.useUSB(kb);
         lp.shutdown();
     }
 }

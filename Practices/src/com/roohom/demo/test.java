@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class test {
     public static void main(String[] args) {
-        int i = 10;
-        int j = 4;
-        System.out.println((i/j));
+        String s1 = "itcast";
+        String s2 = "it";
+        String s3 = s2 + "cast";
+
+        System.out.println(s2==s3);
+        System.out.println(s2.equals(s3));
 
     }
 }
