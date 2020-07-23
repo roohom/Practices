@@ -292,10 +292,37 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
             – 成员变量: 有默认值
             – 局部变量: 没有默认值, 必须先定义, 再赋值, 然后才能使用
     - **就近原则**
-        - 当在方法中和方法所属的类中，有相同名称的变量时，在方法中使用变量时，**优先使用局部变量**        
+        - 当在方法中和方法所属的类中，有相同名称的变量时，在方法中使用变量时，**优先使用局部变量**   
+        
+- 在java语言中，是使用类进行编写java程序
+
+- ~~~java
+  class 类名{
+      //书写java代码
+  }
+  ~~~
+- 在类中可以书写的内容有哪些？
+  - 变量
+  - 方法
+- 在java语言中，类除了是用来定义所书写的程序外，类的另一个作用：自定义类型   
+
+- 当书写完自定义类后，需要对类进行初始化（数据类型  变量=初始化）
+
+- 怎么对类进行初始化（初始化的动作，底层：开辟堆内存空间）
+
+  - ~~~java
+    类名  对象名 =  new  类名();
     
-#### 面向对象的三大特征:封装 继承 多态
-封装  
+    类名 ：  数据类型
+    对象名  ：  变量名
+    new  ：  告知JVM要开辟堆空间
+    类名()  ：  告知JVM要开辟空间的大小 （ 类中所书写的所有内容[变量]，进行换算，然后开辟空间 ）
+               自动调用构造方法
+    ~~~
+          
+    
+### 面向对象的三大特征:封装 继承 多态
+####封装  
 什么是封装?
 在面向对象中，对于事物描述是使用类进行的(把事物的属性和行为封装到类中)
 
@@ -397,7 +424,7 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
     - 3、执行构造代码块
 
 
-### 继承
+#### 继承
 1.什么是继承?
     在一个累的基础上，另一个类继承该类，继承类可以继承前面类中的属性和行为  
 2.使用extends关键字来实现继承
@@ -445,7 +472,6 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
 - 在继承中成员方法的特点
     - 1.在父子类同时具有一模一样的成员方法时，在使用子类对象.成员方法，优先调用子类的成员方法，此即是**就近原则**
     - 2.如果子类没有，就去父类中找，父类也没有就报错  
-    
     
 - 方法的重写(override)
     - 为什么要重写
@@ -498,10 +524,61 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
      3.一个类可以继承自一个父类，可以同时实现多个接口  
      4.成员变量要用 public static final修饰，也就是常量  
      5.接口中所有成员方法必须有public abstract共同修饰，也就是抽象方法    
-         
+  
+  
+### static关键字    
+> 通常情况下成员变量都隶属于对象层级，每个对象都拥有独立的内存空间来记录自己独有的成员变量，当所有的
+> 对象的成员变量的值都完全一样时，若每个对象单独记录则会造成内存空间的浪费，此时应该降该成员变量由对象层级提升至
+> 类层级，在内存空间中只保留一份且被所有的对象所共享，为了实现该效果，故使用static关键字来修饰，表示静态的含义。
+> static关键字可以修饰成员变量和成员方法表示隶属于类层级，推荐使用"类名."的方式访问
+
+- 使用方式
+    1.对于非静态的成员方法来说，既可以访问非静态的成员同时也可以访问静态的成员；(成员:成员变量+成员方法)
+    2.对于**静态的成员**方法来说，**只能访问静态的成员**，不能访问非静态的成员；(如果非要调用非静态方法，必须使用"对象.非静态方法"的方式访问，对于非静态变量也是如此)
+    (执行静态方法的时候**可能还没有创建对象**，非静态成员隶属于对象层级)
+    3.只有被所有对象共享的内容才能被static修饰，不能随便加
  
+- 静态成员
+    - 存放在JVM的方法区内
+    - 使用“类名.”访问
+    - 随着类的加载而存在，早于对象的创建
+- 非静态成员
+    - 存放在JVM的堆内存中    
+    - 通过“对象.”访问
+    - 随着对象的创建而存在，晚于对象的创建
+    
+- 注意事项:
+    - 静态方法中是无法使用this和super的       
  
-### 多态
+### 对象创建的过程
+#### 单个对象创建的过程
+1.将xxx.class文件中的相关类信息读取到内存空间的方法区，这个过程叫做类的加载
+2.当程序开始运行时找main()方法去执行方法体重的语句，使用new来创建对象
+3.若没有指定初始值，采用默认的初始化，否则采用指定的数值来初始化
+4.可以通过构造块来进行更改成员变量的数值
+5.执行构造方法体中的语句，可以进行再次的修改成员变量的数值
+6.此时对象创建完毕，继续执行后续的语句
+
+TestSuperObject类中的静态语句块
+TestSuperObject类中的构造块
+TestSuperObject()的方法体
+
+#### 子类对象创建的过程
+1.先加载父类再去加载子类，先执行父类的静态语句块，再执行子类的静态语句块；
+2.执行父类的构造块，再执行父类的构造方法体，此时父类部分构造完毕
+3.执行子类的构造块，再执行子类的构造方法体，此时子类对象构造完毕        
+
+TestSuperObject类中的静态语句块
+TestSubObject类中的静态语句块
+TestSuperObject类中的构造块
+TestSuperObject()的方法体
+TestSubObject类中的构造块
+TestSubObject()的方法体
+
+总结: **静态块>main()>构造块>构造方法** 
+ 
+
+#### 多态
 - 三个条件
     - 1.要有继承
     - 2.要有重写
@@ -525,7 +602,245 @@ Java是一门**强类型**语言：在定义变量时就指定了变量的具体
     
 - 多态的意义    
     - 多态的意义在于:可以屏蔽不同子类的差异性编写通用的代码，从而产生不同的效果
+
+~~~java
+//父类
+abstract class Person{
+    private String name;
+    private int age;
     
+    ....
+    
+    //通常父类中的方法无法明确具体的功能代码时，只需要针对方法进行声明（只定义没有方法体）
+    //抽象方法： 只定义没有方法体
+    public abstract void eat();
+}
+
+class Student extends Person{
+    //子类在继承了抽象类后，必须重写抽象方法（java语法规定）
+    public void eat(){
+      System.out.println("去校区食堂吃饭...");
+    }
+} 
+class Teacher extends Person{
+    //子类在继承了抽象类后，必须重写抽象方法（java语法规定）
+    public void eat(){
+      System.out.println("去校外吃饭...");
+    }
+}
+
+ class Test{
+     public static void main(String[] args){
+         //创建学生对象
+         Student stu = new Student();
+       
+         method1( stu  , "zs" , 20  ,   .....)
+         
+         //创建老师对象
+         Teacher tea = new Teacher();
+          
+         method2(  tea ,"ls" ,33 , ...... )
+         
+     }  
+     
+     
+     
+     //大在书写程序时：当发现有重复的代码，建议都进行抽取封装：方法、类  （复用性）
+     
+      public static void method1( Student stu, String name , int age , ... ){
+         stu.setName( name  );//因为Student继承了Person，可以使用父类中的非私有成员
+         stu.setAge(  age  );
+         ....
+         stu.eat();  
+      }
+     
+      public static void metho2 ( Teacher  tea , String name , int age , ...  ){
+         tea.setName(  name   );
+         tea.setAge(  age  );
+         ....
+         tea.eat(); 
+      }
+     
+     //添加就业班
+     
+     //观察以上两个方法中的代码：除了对象名不同，其它都一样   (99%都是重复代码)
+     针对代码，再次精进：
+     
+      public void method(  ?   , String name , int age , ...){
+     
+         ?.setName(  name   );
+         ?.setAge(  age  );
+         
+         ....
+         ?.eat();  
+      }  
+     
+     ? 有两个类型：  Student 、 	Teacher
+     Student类型和Teacher类型有什么相同？
+     继承的父类是同一个    
+     
+     java语言提供了一种方案：多态
+     多态的使用:
+     1、要有继承关系
+     2、子类要重写父类中的方法
+     3、 父类的引用指向子类对象
+         父类  父引用  =  new  子类();
+     
+     
+     Person p1 = new Student();
+     p1.setName(...)
+     p1.eat()//调用的是对象中的eat方法
+         
+     Person p2 = new Teacher();
+     p2.setName(....)
+     p2.eat();
+     
+     
+    
+     
+     
+      public static void method(  Person p  ,  String name , int age , ...  ){
+          
+         p.setName(  name   );
+         p.setAge(  age  );
+         
+         ....
+         p.eat();  
+      }
+     
+     
+     
+     Student stu = new Student();
+     Person p = stu ; //多态
+     
+     method( stu ,"ls" , 20 ,....);
+     
+     
+     Teacher tea = new Teacher();
+       method( tea   );
+     
+         
+ }
+~~~
+
+
+~~~java
+//父类
+abstract class Person{
+    private String name;
+    private int age;
+    
+    ....
+    
+    //通常父类中的方法无法明确具体的功能代码时，只需要针对方法进行声明（只定义没有方法体）
+    //抽象方法： 只定义没有方法体
+    public abstract void eat();
+}
+
+class Student extends Person{
+    //子类在继承了抽象类后，必须重写抽象方法（java语法规定）
+    public void eat(){
+      System.out.println("去校区食堂吃饭...");
+    }
+} 
+class Teacher extends Person{
+    //子类在继承了抽象类后，必须重写抽象方法（java语法规定）
+    public void eat(){
+      System.out.println("去校外吃饭...");
+    }
+}
+
+
+
+     
+     
+//需求升学：老师需要划分为基础班老师、就业班老师
+//父类
+abstract class Person{
+    private String name;
+    private int age;
+    
+    ....
+    
+    //通常父类中的方法无法明确具体的功能代码时，只需要针对方法进行声明（只定义没有方法体）
+    //抽象方法： 只定义没有方法体
+    public abstract void eat();
+}
+
+class Student extends Person{
+    //子类在继承了抽象类后，必须重写抽象方法（java语法规定）
+    public void eat(){
+      System.out.println("去校区食堂吃饭...");
+    }
+} 
+     
+//基础班老师    
+class BasicTeacher extends Person{
+    //子类在继承了抽象类后，必须重写抽象方法（java语法规定）
+    public void eat(){
+      System.out.println("吃外卖...");
+    }
+}     
+//就业班老师    
+class WorkTeacher extends Person{
+    //子类在继承了抽象类后，必须重写抽象方法（java语法规定）
+    public void eat(){
+      System.out.println("去校外吃饭...");
+    }
+}      
+     
+
+ class Test{
+     public static void main(String[] args){
+         //创建学生对象
+         Student stu = new Student();
+         
+      
+         //创建基础老师对象
+         BasicTeacher tea = new BasicTeacher();
+         
+         //创建就业班老师对象
+         WorkTeacher tea2 = new WorkTeacher();
+        
+      
+         method(  stu , "zs" , 20  )
+         method(  tea , "ls" , 33  )  
+             
+         method(  tea2  , "ja"  30  )    
+         
+     }  
+     
+     public static void method(  Person  p ,  String name, int age ){
+         p.setName( name )
+         p.setAge(age)
+         ...
+         
+         p.eat();    
+      }
+ }
+~~~ 
+
+> 在使用多态时，存在 一个问题：父引用无法使用子类中特有的成员
+> 解决方案： 使用向下转型 （强制类型转换）
+>
+> 格式：子类  子类对象 = (子类) 父引用
+>
+> 当在进行强制类型转换时，如果父引用指向的对象类型 和 要转换的类型不匹配，就会发生：错误
+>
+> 父引用指向的对象类型 ：  Person p = new Student();  //类型：Student
+> 要转换的类型：  Teacher 
+> 错误代码：  Teacher tea  = (Teacher ) p;//类型转换错误
+>
+> 通常在进行向下转型时，会先进行判断：
+>
+> if( p  instanceo  Teacher){ 
+>
+>   Teacher tea  = (Teacher ) p;
+>
+> }
+>
+> 父引用  instanceof  子类类型    ：  判断父引用指向的对象类型 是否为 子类类型
+   
  
         
 ### 包
