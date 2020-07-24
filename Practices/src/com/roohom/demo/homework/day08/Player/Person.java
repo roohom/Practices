@@ -7,13 +7,12 @@ package com.roohom.demo.homework.day08.Player;
  * Date: 2020/7/22 19:47
  * Software: IntelliJ IDEA
  */
-public class Person {
+public abstract class Person {
     private String name;
     private int age;
 
-    public  void eat(){
-
-    }
+    //抽象类中的抽象方法
+    public  abstract void eat();
 
     public Person() {
     }

@@ -10,13 +10,14 @@ import sun.usagetracker.UsageTrackerClient;
  * Date: 2020/7/22 19:43
  * Software: IntelliJ IDEA
  */
-public class PingPangPlayer extends Person implements English{
+public class PingPangPlayer extends Player implements English{
     @Override
     public void eat() {
         System.out.println("乒乓运动员吃该吃的");
     }
 
-    public void  playPingpang()
+    @Override
+    public void  learnPlay()
     {
         System.out.println("乒乓球运动员学习如何发球");
     }

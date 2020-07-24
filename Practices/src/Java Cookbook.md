@@ -645,7 +645,7 @@ class Teacher extends Person{
      
      
      
-     //大在书写程序时：当发现有重复的代码，建议都进行抽取封装：方法、类  （复用性）
+     //在书写程序时：当发现有重复的代码，建议都进行抽取封装：方法、类  （复用性）
      
       public static void method1( Student stu, String name , int age , ... ){
          stu.setName( name  );//因为Student继承了Person，可以使用父类中的非私有成员

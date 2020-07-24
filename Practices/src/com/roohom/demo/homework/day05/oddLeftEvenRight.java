@@ -126,6 +126,5 @@ public class oddLeftEvenRight {
         //测试
 //        int[] arr = {2,2,2,2,1,2};
 //        System.out.println(ifArrayEven(arr,0,5));
-
     }
 }

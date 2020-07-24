@@ -1,15 +1,17 @@
 package com.roohom.demo;
 
-import java.util.Scanner;
-
 public class test {
     public static void main(String[] args) {
-        String s1 = "itcast";
-        String s2 = "it";
-        String s3 = s2 + "cast";
+        StringBuilder sb1 = new StringBuilder("ABC");
+        StringBuilder sb = new StringBuilder();
+        sb.append("ABC");
+        sb.reverse();
+        System.out.println(sb.toString());
 
-        System.out.println(s2==s3);
-        System.out.println(s2.equals(s3));
+        System.out.println(sb.capacity());
+        System.out.println(sb1.capacity());
+
+
 
     }
 }

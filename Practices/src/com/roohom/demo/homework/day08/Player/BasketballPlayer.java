@@ -7,12 +7,18 @@ package com.roohom.demo.homework.day08.Player;
  * Date: 2020/7/22 19:46
  * Software: IntelliJ IDEA
  */
-public class BasketballPlayer extends Person{
+public class BasketballPlayer extends Player{
 
     @Override
     public void eat() {
         System.out.println("篮球运动员吃该吃的");
     }
+
+    @Override
+    public void learnPlay() {
+
+    }
+
 
     public void palyBasketball()
     {
