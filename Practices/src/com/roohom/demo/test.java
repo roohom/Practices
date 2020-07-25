@@ -10,8 +10,5 @@ public class test {
 
         System.out.println(sb.capacity());
         System.out.println(sb1.capacity());
-
-
-
     }
 }
