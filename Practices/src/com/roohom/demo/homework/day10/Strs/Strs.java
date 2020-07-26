@@ -34,7 +34,6 @@ public class Strs {
         }
 
         //包含def
-
         int count=0;
         for (int i = 0; i < ls.size(); i++) {
             if (myContains(ls.subList(i,i+1),"def"))
