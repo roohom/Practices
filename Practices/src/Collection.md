@@ -150,18 +150,19 @@ new Student
 - 特点:
     - 1.存取元素有序。存储元素的顺序和取出元素的顺序一致
     - 2.list集合允许存储重复元素
-    - 3.list集合中有索引。可以利用索引精确访问集合中的每一个元素
+    - 3.list集合中有索引，可以利用索引精确访问集合中的每一个元素
     
 - 创建:
+    - 没有构造方法
     - List是一个接口，无法实例化，需要借助子类
     - List list = new ArrayList();
-    - List继承了Collection,父接口的相关功能，list集合也可以使用
+    - List继承于Collection,父接口的相关功能，list集合也可以使用
     
 - 常用方法(特有方法):
     - 添加 void add(int index, Object obj)
     - 修改 Object set(int index, Object obj) //指定索引位置上的元素修改为Obj，并返回修改之前的元素
     - 删除 
-        - boolean remove(Object obj)
+        - boolean remove(Object obj) 删除指定对象
         - Object remove(int index) 删除指定位置元素并返回旧元素
     - 查询 
         - Object get(int index) 查询到元素并返回
@@ -170,13 +171,47 @@ new Student
     - 遍历
         - iterator迭代器(见ListDemo4.java)
         - ListIterator迭代器(专有)
+        - 四种方式:
+            - 1.Iterator迭代器
+                - 不适合遍历的同时增删
+            - 2.ListIterator迭代器
+            - 3.for循环
 - 迭代器
     - 普通迭代器的弊端
-        - 在迭代遍历时，如果向list集合中添加新元素，迭代器会引发异常:ConcurrentModificationException
+        - 在迭代遍历时，如果向list集合中**添加**新元素或**删除**元素，迭代器会引发异常:ConcurrentModificationException
         - 解决办法:
             - 使用专用迭代器:ListIterator (ListIterator listIt = list.ListIterator())  
-    
-    
+    - 增强for循环的底层是迭代器
+#### AarrayList类
+- 底层使用可变**数组**       
+- 特点
+    - 存取有序，有索引
+    - 可以存储重复元素 
+    - 查询和修改效率比较高
+    - 添加和删除元素效率比较低
+#### LinkedList类
+- 底层使用**链表**
+- 在创建LinkedList时所指定的索引，可以指定位置，但是在查询的时候用不上
+- 特点
+    - 存取有序
+    - 可以存储重复元素
+    - 可以存储null
+    - 有角标，但是底层是链表结构用不上
+    - 添加和删除元素效率高    
+    - 查询较慢，修改元素值较慢
+        - 链表特性:有头有尾
+- 特有方法(针对链表的头和尾设计的):        
+    - 添加:
+        - addFirst(Object obj)
+        - addLast(Object obj)
+    - 删除
+        - removeFirst()
+        - removeLast()
+    - 获取
+        - getFirst()    
+        - getLast()
+        
+            
 ## 增强For循环
 增强for循环是用来遍历的，针数组和集合的遍历
 - 弊端
@@ -200,4 +235,121 @@ for(元素类型 元素名: list){
 > 在循环过程中不能向集合中添加元素或者删除元素
     
     
+## 集合的遍历
+- 1.普通迭代器
+    - iterator it = 集合对象.iterator()
+- 2.专用迭代器
+    - 只适用于List
+    - ListIterator li = 集合对象.listIterator()
+- 3.普通for循环
+- 4.增强for循环
+
+**如果要对集合元素进行删除修改应该使用for循环和专用迭代器**
         
+        
+## 数据结构
+# 简单(常用)数据结构
+- 栈
+- 队列
+- 数组(可变数组)
+- 链表
+## 栈
+- 特点:FILO,先进后出
+
+## 队列
+- 特点:FIFO,先进先出
+
+## 可变数组
+创建新数组，将原数组中元素选择性拷贝到新数组中
+- 特点
+    - 有索引
+    - 查询效率高
+
+## 链表
+内存中的存储节点，每个节点通过地址值链接在一起
+- 特点
+    - 查找元素时，从链表的头部开始遍历查找
+    - 无索引
+    - 查询效率低
+    - 添加删除元素的效率高
+- 单链表
+- 双链表
+
+
+## Set集合
+- 特点
+    - 存取无序，唯一
+    - 不能存储重复元素
+    - 是一个接口，无法实例化，需要借助子类
+    - 无索引，不能通过for循环遍历
+- 子类:HashSet和TreeSet
+    - HashSet底层使用哈希表结构
+        - 哈希表结构在存储元素时的过程
+            - 1.拿出存储的元素，结合哈希算法，计算出元素的存储位置
+                - 借助了HashCode()方法
+            - 2.把存储的元素存放到计算出来的位置上
+                - 判断在该位置上是否已经存在元素
+                    - 没有:直接在该位置存储
+                    - 有:比较两个元素是否相同(要存储的元素、已存在的元素)
+                        - 相同:意味着元素一样，不用存储
+                        - 不同:拉链法(拿计算出来的位置，再次结合哈希算法重新计算存储的位置)
+    - TreeSet底层使用树结构
+> 在使用HashSet集合存储自定义对象时，如果希望所存储的自定义对象属性的值不能重复时，需要对HashCode()和equals()方法进行重写
+- 遍历
+    - 迭代器
+    - 增强for
+    - toArray()
+
+## 可变参数
+定义不同的参数的方法，通过重载来实现，但是当参数的个数越来越多时，重载就不好使了，就需要使用可变参数
+- 格式:
+    - 修饰符 返回值类型 方法名(数值类型... 变量名)
+- 要求    
+    - 可变参数必须书写在方法参数声明的最后一个参数位置上    
+    - 在方法参数声明时，只能存在一个可变参数(不考虑参数类型)
+    - 当方法中需要传递其他参数时，需要将这些参数书写在可变参数之前
+    
+## Map集合
+是一个接口，不能实例化，需要借助子类
+- 特点
+    - 底层使用了两个单列集合
+    - 存储两个元素:一次存储一对元素(键值对)    
+    - 存储的Key元素不能重复(底层使用使用Set集合来存储键)
+  
+~~~
+|--HashMap类
+|--TreeMap类
+~~~    
+
+- 常用方法:
+    - 添加:
+        - public V put(Object key,Object value)
+            - 一次性向集合中添加键值对这一对元素，并返回value
+            - 底层实现:现在Map集合中通过key来判断是否存在的key元素
+                - 有:就直接针对当前的key，来修改value(新的覆盖旧的)，返回旧的value
+                - 没有，直接添加
+            - 如果Map是空集合，第一次使用put方法，返回的是null，因此可以通过判断返回的是不是null来判断是不是第一次天剑
+    - 修改:
+        - public V put(Object key,Object value)
+    - 删除:
+        - public V remove(Object key) //根据指定的键删除集合中相应的一对元素，返回被删除的value
+    - 查询:public V get(Object key) //根据指定的key元素，获取集合中匹配的value元素
+    - 判断:
+        - boolean containsKey(Object key)
+        - boolean containsValue(Object value)
+        - boolean isEmpty() 判断是否为空        
+- 遍历
+    - Map集合本身无法遍历，Map集合中没有迭代器
+    - Map集合的遍历:
+        - 1.使用存储Key元素的Set集合，实现遍历
+            - 1.先获取到存储所有Key元素的Set集合
+                - Map集合对象中的KeySet()方法
+            - 2.遍历Set集合(迭代器，增强for)
+            - 3.遍历过程中获取每一个key元素
+            - 4.利用Map集合中的get(Object key),实现通过key获取value
+        - 2.向Map集合中存储的一对键值对对象类型是:Map.Entry类型
+            - 1.利用Map集合中的方法，获取集合中所有的Map.Entry    
+            - 2.遍历所有的Map.Entry
+            - 3.利用Map.Entry对象中的方法，分别获取:Key,Value
+                - EntrySet()
+                    - 获取所有的键值对对象集合(Set集合<Map.Entry>)    

@@ -39,6 +39,12 @@ public class Strs {
             if (myContains(ls.subList(i,i+1),"def"))
                 count++;
         }
+        //如果只想统计def，却不使用myContains，可以使用enhanced for
+        int c = 0;
+        for (String s: ls) {
+            if(s.equals("def"))
+                c++;
+        }
         System.out.println("集合中有"+count+"个def");
 
 
@@ -59,9 +65,10 @@ public class Strs {
         //将集合转换成String类型并打印
         String[] arr = new String[ls.size()];
         ls.toArray(arr);
-        for (String l : ls) {
+        for (String l : arr) {
             System.out.print(l + " ");
         }
+        //另一种，遍历集合把集合中每一个元素存储到一个新的String[]数组中
     }
 
     public static boolean myContains(List list, String str)
