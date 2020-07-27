@@ -24,7 +24,12 @@ public class MapDemo2 {
         if (map.containsKey("3"))
             map.remove("3");
         System.out.println(map);
-        map.clear();
-        System.out.println(map);
+        //map.clear();
+        //System.out.println(map);
+
+        System.out.println("键2对应的值为:"+map.get("2"));
+        System.out.println(map.keySet());
+        System.out.println(map.values());
+
     }
 }
