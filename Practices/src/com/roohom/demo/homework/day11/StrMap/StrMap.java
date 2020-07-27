@@ -18,17 +18,29 @@ public class StrMap {
 
         Map<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < str.length(); i++) {
-            map.put(str.charAt(i), getCount(str, str.charAt(i)));
+            if (map.get(str.charAt(i)) == null) {
+                map.put(str.charAt(i), 1);
+            } else {
+                map.put(str.charAt(i), map.get(str.charAt(i)) + 1);
+            }
         }
+        System.out.println(map);
+        //第二种方法
+//        for (int i = 0; i < str.length(); i++) {
+//            map.put(str.charAt(i), getCount(str, str.charAt(i)));
+//        }
+//
+//        Set<Character> chars = map.keySet();
+//        for (Character aChar : chars) {
+//            System.out.println("Key:" + aChar + ",Value:" + map.get(aChar));
+//        }
 
-        Set<Character> chars = map.keySet();
-        for (Character aChar : chars) {
-            System.out.println("Key:" + aChar + ",Value:" + map.get(aChar));
-        }
+
     }
 
     /**
      * Function:获取指定字符在字符串中出现的次数
+     *
      * @param str   源字符串
      * @param aChar 指定字符
      * @return 出现次数
