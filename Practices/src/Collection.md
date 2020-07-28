@@ -353,3 +353,29 @@ for(元素类型 元素名: list){
             - 3.利用Map.Entry对象中的方法，分别获取:Key,Value
                 - EntrySet()
                     - 获取所有的键值对对象集合(Set集合<Map.Entry>)    
+                    
+                    
+## 小结
+~~~
+|---Collection集合(接口):单列集合的顶层父接口
+    |---List集合(接口):存取有序、有索引、元素可重复
+        |---ArrayList集合(类):底层使用数组，查询修改比较高快
+            |--- 常用方法:add remove set get
+        |---LinkList集合(类):底层使用链表，删除添加比较快
+            |---常用方法:addFirst addLast removeFirst removeLast getFirst getLast
+    |---Set集合(接口):存取无序，没有索引，元素唯一
+        |---常用方法:全部来自于Collection
+        |---HashSet集合(类):底层使用哈希表
+        |---TreeSet集合(类):底层使用树(二叉树)结构
+        |---LinkedHashSet(类):底层使用哈希表+链表结构。特点，有序存取
+|---Map集合(接口):双列集合的顶层父接口
+    |---常用方法:put remove get
+        Set KeySet() 获取双列集合中用来存储所有的Key元素的单列集合
+        Set<Map.Entry> entrySet
+    |---HashMap集合(类):底层使用哈希表
+    |---TreeMap集合(类):底层使用树结构
+
+
+~~~
+> 当拿捏不定时，选择List集合
+

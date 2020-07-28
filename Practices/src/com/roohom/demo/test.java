@@ -1,0 +1,18 @@
+package com.roohom.demo;
+
+/**
+ * ClassName: test
+ * Author: Roohom
+ * Function:
+ * Date: 2020/7/29 00:27
+ * Software: IntelliJ IDEA
+ */
+public class test {
+    public static void main(String[] args) {
+        System.out.print("*****");
+        //System.out.print("\b\b\b\b\b\b");
+        System.out.print("\r");
+        System.out.println("+++++");
+
+    }
+}

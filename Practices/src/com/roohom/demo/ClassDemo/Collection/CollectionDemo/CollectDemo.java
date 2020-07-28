@@ -21,6 +21,7 @@ public class CollectDemo {
         coll.add(100);   // 自动装箱 int -> Integer Integer -> 类型提升 ->Object
         coll.add(122222.2222);
         coll.add(true);
+        System.out.println(coll.remove(100));
         System.out.println("目前长度:"+coll.size());
 
         System.out.println(coll.toString());//ArrayList重写了toString方法
