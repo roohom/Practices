@@ -1,4 +1,4 @@
-package com.Tuling.demo;
+package com.Tuling.demo.Pratices;
 
 /**
  * ClassName: TestDoWhile

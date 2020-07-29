@@ -1,6 +1,5 @@
 package com.roohom.demo.homework.day12.StuManageSystem;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package com.Tuling.demo;
+package com.Tuling.demo.Pratices;
 
 import java.util.Random;
 import java.util.Scanner;
