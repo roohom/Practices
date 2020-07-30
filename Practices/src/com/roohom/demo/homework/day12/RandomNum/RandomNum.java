@@ -3,6 +3,7 @@ package com.roohom.demo.homework.day12.RandomNum;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * ClassName: RandomNum
@@ -21,18 +22,33 @@ public class RandomNum {
             int num = (int) (Math.random() * 20 + 1);
             if (num%2==0)
                 list.add(num);
+            else
+                i--;
+        }
+        for (int i = 0; i < 8; i++) {
             sum += list.get(i);
             System.out.print(list.get(i) + " ");
         }
         double avg = sum/8;
         System.out.println("平均数是:" + avg);
 
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i)<avg) {
-                list.remove(i);
-                i--;
-            }
+//        //for循环删除元素
+//        for (int i = 0; i < list.size(); i++) {
+//            if (list.get(i)<avg) {
+//                list.remove(i);
+//                i--;
+//            }
+//        }
+
+        //专用迭代器删除元素
+        ListIterator<Integer> listIt = list.listIterator();
+        while (listIt.hasNext()) {
+            Integer next =  listIt.next();
+            if (next<avg)
+                listIt.remove();
         }
+
+
 
         //增强for删除和打印集合中元素
         System.out.println("使用增强for打印元素:");

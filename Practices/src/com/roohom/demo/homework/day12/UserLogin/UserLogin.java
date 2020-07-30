@@ -69,6 +69,7 @@ public class UserLogin {
                 login(users);
             else if (input.equals("3")) {
                 System.out.println("再见~");
+                //System.exit(1); //终止JVM
                 break;
             }
         }
