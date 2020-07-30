@@ -24,3 +24,55 @@
     - `int read()` 读一个字节数据
     - `int read(byte[] bys)` 读取多个字节        
     - `int read(byte[] bys, int offset, int len)` 从起始位置offset开始读取len个长度的字节
+    
+- 读写结合，一种高速的写方法
+    - 示例:
+        ~~~java
+        public class FileCopy {
+            public static void main(String[] args) {
+                FileInputStream fis = null;
+                FileOutputStream fos = null;
+                try {
+                    fis = new FileInputStream("D:\\initialD.png");
+                    fos = new FileOutputStream("D:\\copy\\initialD.jpg");
+                    byte[] buf = new byte[1024];
+                    /*
+                    //一个字节一个字节地读
+                    int c ;
+                    while ((c=fis.read())!=-1)
+                        fos.write(c);
+        
+                     */
+                    int len = -1;
+                    while ((len = fis.read(buf)) != -1) {
+                        fos.write(buf, 0, len);
+                    }
+                    
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        assert fis != null;
+                        fis.close();
+                        assert fos != null;
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        ~~~    
+    
+## 高效流
+高效流:字节高效流、字符高效流
+- 字节高效流：    
+    - 本质:字节输入缓冲流只是提供缓冲区，本身不能读取文件，需要依赖于字节输入流实现读取数据
+    - 字节输入缓冲流:BufferedInputStream
+        - 高效的字节输入流, 封装 普通的字节输入流, 提供缓冲区
+        - `public BufferedInputStream(InputStream is)`
+        - 示例:`BufferedInputStream bis = new BufferedInputStream(new FileInputStream("file_path"))`
+    - 字符输出缓冲流:BufferedOutputStream
+        - 高效的字节输出流, 封装 普通的字节输出流, 提供缓冲区
+        - `public BufferedOutputStream(OutputStream is)`
+        - 示例:`BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("file_path"))`
