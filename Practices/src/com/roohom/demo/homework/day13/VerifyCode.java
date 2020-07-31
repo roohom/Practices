@@ -19,7 +19,7 @@ public class VerifyCode {
 
         try {
             fis = new FileInputStream("data.txt");
-            fos = new FileOutputStream("data.txt");
+            //fos = new FileOutputStream("data.txt",true);
             //先写入用户录入的三个验证码
             System.out.println("请随机输入三个验证码:");
             for (int i = 0; i < 3; i++) {
@@ -32,9 +32,9 @@ public class VerifyCode {
             StringBuilder str = new StringBuilder();
 
             do {
-                if ((b=fis.read()) != '\n')
+                if ((b = fis.read()) != '\r') {
                     str.append((char) b);
-                else {
+                } else {
                     if (str.toString().equals(input)) {
                         System.out.println("恭喜你，验证成功！");
                         break;
@@ -44,6 +44,31 @@ public class VerifyCode {
                 if (b == -1)
                     System.out.println("验证失败！");
             } while ((b != -1));
+
+
+
+            /*
+            //另一种 这种方式应用更广泛
+            byte[] buf = new byte[1024];
+            int len = fis.read(buf);
+            String string = new String(buf, 0, len);
+            String strs[] = string.split("\r\n");
+
+            int count = 0;
+            for (int i = 0; i < strs.length; i++) {
+                if (strs[i] != null) {
+                    if (strs[i].equals(input)) {
+                        System.out.println("成功");
+                        break;
+                    } else
+                        count++;
+                }
+            }
+            if (count == 3)
+                System.out.println("失败");
+
+            */
+
 
         } catch (IOException e) {
             e.printStackTrace();

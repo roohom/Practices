@@ -65,7 +65,7 @@ public class FileCopyBuffer {
             bis = new BufferedInputStream(new FileInputStream(path1));
             bos = new BufferedOutputStream(new FileOutputStream(path2));
             /*核心代码开始*/
-            int b = -1;
+            int b;
             while ((b = bis.read()) != -1) {
                 bos.write(b);
             }

@@ -21,7 +21,6 @@ public class ReadAndReverse {
             int len;
             StringBuilder str = new StringBuilder();
             byte[] b = new byte[16];
-            byte[] newb = new byte[6];
             while ((len = fis.read(b)) != -1) {
                 str.append(new String(b, 0, len));
             }
@@ -32,6 +31,19 @@ public class ReadAndReverse {
             for (int i = str.length()-1; i >= 0; i--) {
                 fos.write(str.charAt(i));
             }
+            //另一种方法:
+            //反转:Collection工具类和StringBuilder类
+            //byte[] -> String
+
+            //使用String->StringBuilder->String
+            //StringBuilder类的reverse()方法
+            /*byte[] bytes = new byte[100];
+            len = fis.read(bytes);
+            StringBuilder str1 = new StringBuilder();
+            str1.append(new String(b,0,len));
+            String str2 = new StringBuilder(str1).reverse().toString();
+            */
+
         } catch (IOException e) {
             e.printStackTrace();
         }
