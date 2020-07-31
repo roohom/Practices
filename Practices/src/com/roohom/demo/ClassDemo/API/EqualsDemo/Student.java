@@ -1,7 +1,5 @@
 package com.roohom.demo.ClassDemo.API.EqualsDemo;
 
-import java.util.Objects;
-
 /**
  * ClassName: Student
  * Author: Roohom

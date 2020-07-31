@@ -1,4 +1,4 @@
-package com.roohom.demo.ClassDemo.API.EqualsDemo.SimpleDateFormat;
+package com.roohom.demo.ClassDemo.API.SimpleDateFormat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

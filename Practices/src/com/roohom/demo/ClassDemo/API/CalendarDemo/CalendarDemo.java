@@ -1,4 +1,4 @@
-package com.roohom.demo.ClassDemo.API.EqualsDemo.CalendarDemo;
+package com.roohom.demo.ClassDemo.API.CalendarDemo;
 
 import kotlin.reflect.jvm.internal.impl.renderer.ClassifierNamePolicy;
 
