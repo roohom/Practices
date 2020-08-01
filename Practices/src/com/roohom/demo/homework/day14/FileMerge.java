@@ -12,42 +12,22 @@ import java.util.Scanner;
  */
 public class FileMerge {
     public static void main(String[] args) {
-        String file_name1 = new Scanner(System.in).next();
-        String file_name2 = new Scanner(System.in).next();
-        String file_name3 = new Scanner(System.in).next();
-        String file_name4 = new Scanner(System.in).next();
-        String file_name = new Scanner(System.in).next();
-        try {
-            BufferedInputStream bis1 = new BufferedInputStream(new FileInputStream(file_name1));
-            BufferedInputStream bis2 = new BufferedInputStream(new FileInputStream(file_name2));
-            BufferedInputStream bis3 = new BufferedInputStream(new FileInputStream(file_name3));
-            BufferedInputStream bis4 = new BufferedInputStream(new FileInputStream(file_name4));
+        String sub_name =  "D:\\copy\\AE86_";                   //new Scanner(System.in).next();
+        String merge_name = "D:\\copy\\AE86_Merge.mp4";               // new Scanner(System.in).next();
 
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file_name));
+        //获取文件大小
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(merge_name));
             int size = 8;
             byte[] buf = new byte[1024 * 1024 * size];
             int len = -1;
-            while ((len = bis1.read()) != -1) {
-                bos.write(buf);
+            for (int i = 0; i < 8; i++) {
+                BufferedInputStream bis = new BufferedInputStream(new FileInputStream(sub_name+(i+1)+".mp4"));
+                while ((len = bis.read(buf)) != -1) {
+                    bos.write(buf,0,len);
+                }
+                bos.flush();
             }
-            bos.flush();
-            while ((len = bis2.read()) != -1) {
-                bos.write(buf);
-            }
-            bos.flush();
-            while ((len = bis3.read()) != -1) {
-                bos.write(buf);
-            }
-            bos.flush();
-            while ((len = bis4.read()) != -1) {
-                bos.write(buf);
-            }
-            bos.flush();
-
-            bis1.close();
-            bis2.close();
-            bis3.close();
-            bis4.close();
             bos.close();
         } catch (IOException e) {
             e.printStackTrace();

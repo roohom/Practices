@@ -9,10 +9,8 @@ package com.roohom.demo;
  */
 public class test {
     public static void main(String[] args) {
-        System.out.print("*****");
-        //System.out.print("\b\b\b\b\b\b");
-        System.out.print("\r");
-        System.out.println("+++++");
+        String str =  "acb.vom";
+
 
     }
 }
