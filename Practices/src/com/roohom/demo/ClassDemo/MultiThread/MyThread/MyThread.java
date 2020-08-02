@@ -1,4 +1,4 @@
-package com.roohom.demo.ClassDemo.MultiThread;
+package com.roohom.demo.ClassDemo.MultiThread.MyThread;
 
 /**
  * ClassName: MyThread
@@ -11,10 +11,10 @@ public class MyThread extends Thread {
     public MyThread(String name) {
         super(name);
     }
-
+    //耦合度过高
     @Override
     public void run() {
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 100; i++) {
             System.out.println(getName() + "正在执行" + i);
         }
     }

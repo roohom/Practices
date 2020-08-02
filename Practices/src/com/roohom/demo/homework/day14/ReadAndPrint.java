@@ -1,8 +1,6 @@
 package com.roohom.demo.homework.day14;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -13,6 +11,37 @@ import java.util.Scanner;
  * Software: IntelliJ IDEA
  */
 public class ReadAndPrint {
+
+    //另一种方法使用字符输出缓冲流
+    public static void charSplice()
+    {
+        System.out.println("请输入一个字符串:");
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("data.txt"));
+            bw.write(new Scanner(System.in).next());
+            bw.newLine();
+            //切记要刷新，不然可能没数据写入到文件
+            bw.flush();
+            bw.close();
+            BufferedReader br = new BufferedReader(new FileReader("data.txt"));
+
+            StringBuilder str = new StringBuilder();
+            String line = br.readLine();
+            for (int i = 0; i < 3; i++) {
+                str.append(line.charAt((int)Math.random()*line.length()));
+            }
+            System.out.println(str);
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
     public static void main(String[] args) {
         try {
             FileWriter fw = new FileWriter("data.txt");

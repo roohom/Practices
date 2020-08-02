@@ -1,9 +1,9 @@
 package com.roohom.demo.homework.day14;
 
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * ClassName: FileToArryList
@@ -13,6 +13,21 @@ import java.util.Arrays;
  * Software: IntelliJ IDEA
  */
 public class FileToArryList {
+    //另一种方法:
+    public static void method()
+    {
+        List<String> list = new ArrayList<>();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("data.txt"));
+            br.readLine();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     public static void main(String[] args) {
         ArrayList<String> lanList = new ArrayList<>();
         try {

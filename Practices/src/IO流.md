@@ -5,7 +5,25 @@
 <a id=top></a>
 
 ## 字节流
-
+- 分类:
+    - 字节输入流
+        - 顶层父类:InputStream
+        - 用字节流读取文件
+            - FileInputStream
+            - ~~~
+              int len=-1;
+              byte[] buf = new byte[1024];
+              while((len=fis.read())!=-1)
+              {
+                    str = new String(buf,0,len);
+              }
+              ~~~
+    - 字节输出流
+        - 顶层父类:OutputStream
+        - 用字节流写文件
+            - FileOutputStream
+            - bos.write(byte[] buf, int offset, int len)
+            - 如:bos.write(buf,0,len);
 常用方法
 - `FileOutputStream` 写
     
@@ -88,12 +106,37 @@
         - 常用方法`write()`
         - `flush()`
         
+- 字符高效流
+    - BufferedReader()
+        - BufferedReader() br = new BufferedReader(new FileReader(String Path/File file))        
+        
+    - BufferedWriter()  
+        - BufferedWtiter() bw = new BufferedWriter(new FileWriter(String Path/File file))      
+        
 ## 字符流
 字符流:针对纯文本文件进行读写操作的流
 - 本质:底层还是字节流(把字节流进行封装)
 - 分类:
-    - 字符输出流
     - 字符输入流
+        - 顶层父类:Reader
+        - 读文件:FileReader
+            - FileReader fr = new FileReader(String path/ File file)
+            - ~~~
+              int len=-1;
+              char[] buf = new char[1024];
+              while((len = fr.read())!=-1)
+              {
+                    String Str = new String(buf,0,len);
+              }
+              ~~~
+    - 字符输出流
+        - 顶层父类:Writer
+        - 写文件:FileWriter
+            - FileWriter fw = new FileWriter();
+            - ~~~
+              FileWriter fw = new FileWriter(String path/ File file);
+              fw.write(buf,0,len);
+              ~~~
     
 - 字符输出流:`FileWriter`类
     - 构造方法
@@ -124,10 +167,13 @@
     - 把字节流转换为字符流: `InputStreamReader`
         - `InputStreamReader(InputStream in)`
         - `InputStreamReader(InputStream in, String charsetName)`
+        - InputStreamReader isr = new InputStreamReader(new FileInputStream(String Path))
+        
        
     - 把字符流转换为字节流: `OutputStreamWriter`
         - `OutputStreamWriter(OutputStream out)` param:字节输出流(FileOutputStream)
         - `OutputStreamWriter(OutputStream out, String charsetName)` params:字节输出流(FileOutputStream)、编码表名称
+        - OutputStreamReader isr = new OutputStreamReader(new FileOutputStream(String Path))
 ### `InputStreamReader`:把字节流转换字符流的转换流
 ### `OutputStreamWriter`:把字符流转换为字节流的转换流         
 
@@ -175,7 +221,7 @@
         String line = null;
         while((line = 输入流.readLine())!=null)
         {
-            输入流.write(line);
+            输出流.write(line);
             输出流.newLine();
         }
         ~~~

@@ -1,4 +1,4 @@
-package com.roohom.demo.ClassDemo.MultiThread;
+package com.roohom.demo.ClassDemo.MultiThread.MyThread;
 
 /**
  * ClassName: TestMyThread
@@ -8,12 +8,13 @@ package com.roohom.demo.ClassDemo.MultiThread;
  * Software: IntelliJ IDEA
  */
 public class TestMyThread {
+    //main()方法也是一个线程
     public static void main(String[] args) {
         System.out.println("这是主线程...");
         MyThread mt = new MyThread("大黄...");
         mt.start();
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 100; i++) {
             System.out.println("小黑" + i);
         }
     }
