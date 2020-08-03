@@ -17,6 +17,9 @@ public class NumGenerator implements Runnable{
 
     @Override
     public void run() {
-        n.generateNum();
+        //如果猜的不对，线程一就不需要结束
+        //一开始没有数字就生成一个数字，有了数字就进行给线程二提示
+        while (!n.stop )
+            n.generateNum();
     }
 }
