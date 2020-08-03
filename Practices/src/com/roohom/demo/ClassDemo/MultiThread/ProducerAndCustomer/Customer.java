@@ -13,7 +13,6 @@ public class Customer implements Runnable {
     public Customer(Box b) {
         this.b = b;
     }
-
     @Override
     public void run() {
         while (true) {

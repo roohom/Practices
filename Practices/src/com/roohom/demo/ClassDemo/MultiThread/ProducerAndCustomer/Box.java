@@ -23,14 +23,11 @@ public class Box {
                 e.printStackTrace();
             }
         }
-
         //如果没有牛奶，就生产牛奶
         this.milk = milk;
         System.out.println("送奶工将第" + this.milk + "瓶奶放入奶箱");
-
         //生产完毕之后，修改奶箱状态
         state = true;
-
         //唤醒其他等待的线程
         notifyAll();
     }

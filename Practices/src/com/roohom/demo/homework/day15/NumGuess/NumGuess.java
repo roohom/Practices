@@ -31,7 +31,7 @@ public class NumGuess {
 
     public synchronized void generateNum() {
         //如果当前执行的线程是生成数者，也就是第一个线程，并且还没有给出一个数字让第二个线程来猜，那么就需要生成一个数字
-        if (Thread.currentThread().getName().equals("generator") && !give) {
+        if (!give) {
             //如果没有数字就生成数字
             num = (int) (Math.random() * 100) + 1;
             System.out.println("第一个线程正在设置数字...");
@@ -50,12 +50,12 @@ public class NumGuess {
         }
         if (num > gsNum) {
             min = gsNum + 1;
-            System.out.println("猜小了");
+            System.out.println("第1个线程回答:猜小了");
         } else if (num < gsNum) {
-            System.out.println("猜大了");
+            System.out.println("第1个线程回答:猜大了");
             max = gsNum - 1;
         } else {
-            System.out.println("本次猜的数字是:" + gsNum);
+            System.out.println("第1个线程回答:你猜的数字是" + gsNum);
             System.out.println("猜对啦！");
             //猜对了程序就可以停下来了，将stop置为true
             stop = true;
@@ -79,7 +79,7 @@ public class NumGuess {
         //如果猜的不对，程序就不需要停止，线程二还需要继续猜，也就是再生成一个数
         if (!stop) {
             gsNum = (int) (Math.random() * (max - min)) + min;
-            System.out.println("第二个线程第" + (count++) + "次猜的数字是:" + gsNum);
+            System.out.println("第2个线程第" + (count++) + "次猜的数字是:" + gsNum);
             //猜过数字了
             guess = true;
         }
