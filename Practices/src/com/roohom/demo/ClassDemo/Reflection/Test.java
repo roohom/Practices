@@ -12,10 +12,13 @@ public class Test {
         Person p =new Person();
 
         try {
+            //第一种方式
            Class aClass =  Class.forName("com.roohom.demo.ClassDemo.Reflection.Person");
 
+           //第二种方式
            Class bClass= Person.class;
 
+           //第三种方式
            Class cClass = p.getClass();
 
             System.out.println(aClass);

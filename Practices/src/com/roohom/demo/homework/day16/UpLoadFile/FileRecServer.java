@@ -15,11 +15,13 @@ public class FileRecServer {
     public static void main(String[] args) {
         try {
             ServerSocket ss = new ServerSocket(9999);
-            Socket s = ss.accept();
+            Socket server = ss.accept();
 
-            System.out.println("已连接的客户端IP为:" + s.getInetAddress());
+            System.out.println("已连接的客户端IP为:" + server.getInetAddress());
 
-            InputStream input = s.getInputStream();
+            InputStream input = server.getInputStream();
+
+            //本第流，写文件
             OutputStream os = new FileOutputStream("RecData.txt");
 
             Thread.sleep(100);
@@ -30,9 +32,15 @@ public class FileRecServer {
                 os.write(buf,0,len);
             }
 
-            OutputStream output = s.getOutputStream();
-            output.write("上传成功!".getBytes());
+            OutputStream output = server.getOutputStream();
+            output.write("服务端的回复:上传成功!".getBytes());
+
+            //释放资源
             os.close();
+            input.close();
+            output.close();
+            ss.close();
+            server.close();
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();

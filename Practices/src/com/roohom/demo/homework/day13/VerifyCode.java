@@ -44,9 +44,6 @@ public class VerifyCode {
                 if (b == -1)
                     System.out.println("验证失败！");
             } while ((b != -1));
-
-
-
             /*
             //另一种 这种方式应用更广泛
             byte[] buf = new byte[1024];
@@ -68,8 +65,6 @@ public class VerifyCode {
                 System.out.println("失败");
 
             */
-
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

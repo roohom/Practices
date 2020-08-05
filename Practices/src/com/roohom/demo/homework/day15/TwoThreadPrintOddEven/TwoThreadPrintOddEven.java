@@ -1,4 +1,4 @@
-package com.roohom.demo.homework.day15;
+package com.roohom.demo.homework.day15.TwoThreadPrintOddEven;
 
 /**
  * ClassName: TwoThreadPrintOddEven
