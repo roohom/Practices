@@ -17,7 +17,7 @@ public class FileOutputDemo {
             //2.关联一个文件
             //当关联的文件不存在时，会自动创建该文件
             //如果是关联文件路径，如果路径不存在就会报错
-            FileOutputStream fos = new FileOutputStream("file.txt");
+            FileOutputStream fos = new FileOutputStream("Student.txt");
 
             //3.使用流对象中的方法向文件中写入数据
             fos.write('a');

@@ -15,7 +15,7 @@ public class FileInputStreamDemo {
     public static void main(String[] args) {
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream("file.txt");
+            fis = new FileInputStream("Student.txt");
 //            int ch = fis.read();
 //            System.out.println((char) ch);
 

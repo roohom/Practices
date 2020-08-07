@@ -1,2 +1,0 @@
-filename = demoClass.properties
-fullClassName=com.roohom.demo.homework.day17.Properties.DemoClass

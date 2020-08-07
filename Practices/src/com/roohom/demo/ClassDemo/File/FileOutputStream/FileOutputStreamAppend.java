@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class FileOutputStreamAppend {
     public static void main(String[] args) {
-        File file = new File("file.txt");
+        File file = new File("Student.txt");
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file,true);

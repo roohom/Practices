@@ -2,6 +2,7 @@ package com.roohom.demo.ClassDemo.Reflection.Properties;
 
 
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Set;
@@ -18,7 +19,7 @@ public class PropertiesStream {
         Properties properties = new Properties();
         try {
             //特点:IO流，可以读取配置文件中的内容
-            properties.load(new FileInputStream("file.txt"));
+            properties.load(new FileInputStream("Student.txt"));
             System.out.println(properties);
             System.out.println(properties.getProperty("className"));
             System.out.println("==========================");

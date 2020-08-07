@@ -13,7 +13,7 @@ import java.io.IOException;
 public class FileOutputStreamMethods {
     public static void main(String[] args) {
         try {
-            FileOutputStream fos = new FileOutputStream("file.txt");
+            FileOutputStream fos = new FileOutputStream("Student.txt");
 
             //一次写入一个
             fos.write('A');

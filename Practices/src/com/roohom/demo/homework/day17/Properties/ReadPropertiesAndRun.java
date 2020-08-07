@@ -19,7 +19,7 @@ public class ReadPropertiesAndRun {
     public static void main(String[] args) {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("file.txt"));
+            properties.load(new FileInputStream("Student.txt"));
             String className = properties.getProperty("fullClassName");
 
             Class clazz = Class.forName(className);

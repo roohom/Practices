@@ -23,7 +23,6 @@ public class Jdbcutils {
         }
     }
 
-
     //获得连接
     public static Connection getConnection() {
         Connection conn = null;

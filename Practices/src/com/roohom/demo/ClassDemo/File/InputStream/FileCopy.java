@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * ClassName: FileCopy
  * Author: Roohom
- * Function:将“file.txt”中的内容拷贝到新的“file2.txt”
+ * Function:将“Student.txt”中的内容拷贝到新的“file2.txt”
  * Date: 2020/7/30 15:01
  * Software: IntelliJ IDEA
  */

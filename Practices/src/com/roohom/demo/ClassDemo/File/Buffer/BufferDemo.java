@@ -12,7 +12,7 @@ import java.io.*;
 public class BufferDemo {
     public static void main(String[] args) {
         try{
-            BufferedInputStream bis = new BufferedInputStream(new FileInputStream("file.txt"));
+            BufferedInputStream bis = new BufferedInputStream(new FileInputStream("Student.txt"));
             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("file4.txt"));
 
             //向file4.txt中写入数据，如果文件不存在则创建并写入
