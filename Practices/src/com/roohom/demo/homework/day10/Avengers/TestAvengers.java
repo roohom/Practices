@@ -44,6 +44,7 @@ public class TestAvengers {
         while (iterator.hasNext()) {
             Avengers avengers = iterator.next();
             if (avengers.getName().length() >= 3 && avengers.getSex().equals("男"))
+                //迭代器删除，此时不能使用列表的删除方法，否则报错
                 iterator.remove();
         }
         System.out.println(aeg.toString());

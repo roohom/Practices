@@ -47,9 +47,5 @@ public class Test {
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
-
-
     }
-
-
 }

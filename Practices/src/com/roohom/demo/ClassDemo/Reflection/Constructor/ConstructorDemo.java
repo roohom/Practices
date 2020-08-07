@@ -32,6 +32,7 @@ public class ConstructorDemo {
         getConsDelcared();
 
     }
+
     //不包括私有构造
     public static void getCons() {
         try {
@@ -62,4 +63,18 @@ public class ConstructorDemo {
             e.printStackTrace();
         }
     }
+
+    public static void getConsObjFullStep() {
+        try {
+            Class stuClass = Class.forName("com.roohom.demo.ClassDemo.Reflection.Constructor.Student");
+            Constructor cons = stuClass.getConstructor();
+
+            Student stu = (Student) cons.newInstance();
+
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

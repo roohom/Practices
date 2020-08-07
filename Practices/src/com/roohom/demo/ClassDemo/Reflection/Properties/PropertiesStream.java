@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * ClassName: PropertiesStream
  * Author: Roohom
- * Function:
+ * Function:读取配置文件内容，并遍历配置文件
  * Date: 2020/8/5 11:20
  * Software: IntelliJ IDEA
  */
@@ -17,12 +17,14 @@ public class PropertiesStream {
     public static void main(String[] args) {
         Properties properties = new Properties();
         try {
+            //特点:IO流，可以读取配置文件中的内容
             properties.load(new FileInputStream("file.txt"));
             System.out.println(properties);
             System.out.println(properties.getProperty("className"));
             System.out.println("==========================");
 
-            Set<String> keys = properties.stringPropertyNames();
+            //遍历properties，获取里面的内容
+            Set<String> keys = properties.stringPropertyNames(); //获取所有的key元素
             for (String key : keys) {
                 System.out.println(key+"==="+properties.getProperty(key));
             }

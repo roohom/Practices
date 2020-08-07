@@ -1,6 +1,7 @@
 package com.roohom.demo.ClassDemo.Annotation.MetaAnno;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Method;
 
 /**
  * ClassName: Test
@@ -14,6 +15,18 @@ public class Test {
         //获取
         Class clazz = MetaAnnotation.class;
 
+        try {
+            Method method = clazz.getMethod("show");
+            if (clazz.isAnnotationPresent(Student.class)) {
+                Student stu = method.getAnnotation(Student.class);
+                System.out.println("名字:" + stu.name());
+            }
+            else
+                System.out.println("没有注解！");
+
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
         //Student student = (Student) clazz.getAnnotation(Student.class);
         //System.out.println(student.name());//拿不到名字
 

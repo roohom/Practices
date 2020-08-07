@@ -26,6 +26,7 @@ import java.lang.annotation.Target;
 @Book(value = "红楼梦", authors = {"曹雪芹"})
 public class BookStore {
 
+    //方法
     @Book(value = "西游记", price = 98, authors = {"吴承恩"})
     public void show() {
 

@@ -74,4 +74,5 @@ public class InvokeMethod {
     }
 
 
+    //以上获得对象的方法的方式在jdk9之后显示过时，即method(clazz.newINstance())过时
 }
