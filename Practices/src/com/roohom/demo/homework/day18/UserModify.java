@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class UserModify {
     public static void main(String[] args) {
-        Connection conn = Jdbcutils.getConnection();
+        Connection conn = C3p0Utils.getConnection();
         PreparedStatement pstmt = null;
         PreparedStatement modify_pst;
         ResultSet rs = null;

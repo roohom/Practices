@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class QueryAllToList {
     public static void main(String[] args) {
-        Connection conn = Jdbcutils.getConnection();
+        Connection conn = C3p0Utils.getConnection();
         String sql = "SELECT * FROM USER";
         PreparedStatement pst = null;
         ResultSet rs = null;

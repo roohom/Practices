@@ -2,11 +2,9 @@ package com.roohom.demo.ClassDemo.JDBC.ConnectionPool.tools;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+import javax.sql.CommonDataSource;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * ClassName: C3p0Utils
@@ -17,15 +15,15 @@ import java.sql.Statement;
  */
 public class C3p0Utils {
     public static DataSource ds = new ComboPooledDataSource();
-
     //从池中获得一个连接
     public static Connection getConnection() {
+        Connection conn = null;
         try {
-            return ds.getConnection();
+            conn = ds.getConnection();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return null;
+        return conn;
     }
 
     public static void releaseAll(ResultSet rs, Statement stmt, Connection conn) {

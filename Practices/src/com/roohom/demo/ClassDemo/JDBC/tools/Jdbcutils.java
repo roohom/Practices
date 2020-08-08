@@ -11,7 +11,7 @@ import java.sql.*;
  */
 public class Jdbcutils {
     private static final String driver = "com.mysql.jdbc.Driver";
-    private static String url = "jdbc:mysql://localhost:3306/roohom";
+    private static String url = "jdbc:mysql://localhost:3306/roohom?useUnicode(true)&characterEncoding=utf-8";
     private static String user = "root";
     private static String password = "";
 

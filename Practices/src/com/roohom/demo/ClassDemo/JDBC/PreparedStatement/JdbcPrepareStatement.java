@@ -41,8 +41,8 @@ public class JdbcPrepareStatement {
 
         try {
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, "中文");
-            pstmt.setInt(2, 8);
+            pstmt.setString(1, "李大神");
+            pstmt.setInt(2, 10);
             int row = pstmt.executeUpdate();
             if (row > 0) {
                 System.out.println("修改成功！");
@@ -79,7 +79,7 @@ public class JdbcPrepareStatement {
 
     public static void main(String[] args) {
         //testInsert();
-        //testUpdate();
-        testQuery();
+        testUpdate();
+        //testQuery();
     }
 }

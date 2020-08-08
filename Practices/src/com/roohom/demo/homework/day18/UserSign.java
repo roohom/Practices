@@ -7,7 +7,9 @@ import com.roohom.demo.ClassDemo.JDBC.tools.Jdbcutils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.sql.Date;
 import java.util.Scanner;
 
 /**
@@ -32,11 +34,20 @@ public class UserSign {
             pstmt.setInt(3,new Scanner(System.in).nextInt());
             System.out.print("请输入你的性别: 男 或者 女 ");
             pstmt.setString(4, new Scanner(System.in).next());
+            //获取当前日期
+            Date time = new Date(System.currentTimeMillis());
+            //格式化解析
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            //时间格式化
+            String current = sdf.format(time);
+
+
             Calendar calendar = Calendar.getInstance();
             String date = calendar.get(Calendar.YEAR)+"年"+(calendar.get(Calendar.MONTH)+1)+"月"+calendar.get(Calendar.DATE)+"日";
             System.out.println("您的注册日期是:"+date);
-            pstmt.setString(5,date);
 
+
+            pstmt.setString(5,current);
             int row = pstmt.executeUpdate();
             if (row>0)
             {

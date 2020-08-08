@@ -1,7 +1,6 @@
 package com.roohom.demo.homework.day18;
 
 import com.roohom.demo.ClassDemo.JDBC.ConnectionPool.tools.C3p0Utils;
-import com.roohom.demo.ClassDemo.JDBC.tools.Jdbcutils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,12 +17,12 @@ import java.util.Scanner;
  */
 public class UserLogin {
     public static void main(String[] args) {
-        Connection conn = Jdbcutils.getConnection();
+        Connection conndb = C3p0Utils.getConnection();
         String sql = "select * from user where name=?";
         ResultSet rs = null;
         PreparedStatement pstmt = null;
         try {
-            pstmt = conn.prepareStatement(sql);
+            pstmt = conndb.prepareStatement(sql);
             System.out.println("请输入您的用户名:");
             String inputName = new Scanner(System.in).next();
             pstmt.setString(1, inputName);
@@ -41,7 +40,7 @@ public class UserLogin {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-            C3p0Utils.releaseAll(rs, pstmt, conn);
+            C3p0Utils.releaseAll(rs, pstmt, conndb);
         }
     }
 }
