@@ -1,6 +1,4 @@
-package com.roohom.demo.homework.day18;
-
-import com.roohom.demo.ClassDemo.JDBC.ConnectionPool.tools.C3p0Utils;
+package me.roohom.OperateOnDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,8 +34,9 @@ public class UserLogin {
                     String pwd = rs.getString("passwd");
                     System.out.println("请输入您的密码:");
                     String userpwd = new Scanner(System.in).next();
-                    if (userpwd.equals(pwd))
+                    if (userpwd.equals(pwd)) {
                         System.out.println("登录成功！");
+                    }
                 }
             }
         } catch (SQLException throwables) {

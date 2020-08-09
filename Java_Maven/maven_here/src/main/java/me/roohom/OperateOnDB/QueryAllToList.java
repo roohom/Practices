@@ -1,6 +1,4 @@
-package com.roohom.demo.homework.day18;
-
-import com.roohom.demo.ClassDemo.JDBC.ConnectionPool.tools.C3p0Utils;
+package me.roohom.OperateOnDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +26,6 @@ public class QueryAllToList {
         try {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
-
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
