@@ -53,7 +53,6 @@ public class TestHttpClient {
 
             // 如果返回的是文本, 使用以下方式直接获取
             String html = EntityUtils.toString(httpEntity, "GBK");
-
             System.out.println(html);
         }
         //2.6: 释放资源

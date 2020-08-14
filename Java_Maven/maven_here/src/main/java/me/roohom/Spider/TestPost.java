@@ -16,18 +16,21 @@ import java.net.URL;
  */
 public class TestPost {
     public static void main(String[] args) {
-        String indexurl = "http://www.itcast.cn";
+        String indexurl = "https://fanyi.baidu.com/v2transapi?from=en&to=zh";
         try {
             URL url = new URL(indexurl);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
-
             /****************POST提交数据***********************/
             //使用输出流向服务器发送请求
             //默认输出流是关闭的
-//            httpURLConnection.setDoOutput(true);
-//            OutputStream output = httpURLConnection.getOutputStream();
-//            output.write("your_args".getBytes());
+            httpURLConnection.setDoOutput(true);
+            OutputStream output = httpURLConnection.getOutputStream();
+            output.write("from:en".getBytes());
+            output.write("to:zh".getBytes());
+            output.write("query:boy".getBytes());
+            output.write("simple_means_flag:3".getBytes());
+            output.write("domain:common".getBytes());
 
 
             InputStream input = httpURLConnection.getInputStream();
@@ -38,7 +41,6 @@ public class TestPost {
                 String str = new String(buf,0,len);
                 System.out.println(str);
             }
-
             input.close();
         } catch (MalformedURLException e) {
             e.printStackTrace();

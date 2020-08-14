@@ -16,12 +16,14 @@ import java.net.Socket;
 public class TcpServer {
     public static void main(String[] args) {
         try {
+            //创建服务端对象
             ServerSocket ss = new ServerSocket(9999);
             //监听客户端的连接，当客户端连接成功之后，则返回socket对象
             //把此处写成循环，分配到多线程，就可以连接多设备进行多客户端聊天
 
             Socket s = ss.accept();
             /*
+            //创建一个服务线程用于处理新的连接
             class Task implements Runnable
             {
                 Socket s = null;
@@ -34,7 +36,6 @@ public class TcpServer {
 
                 }
             }
-
             new Thread(new Task(s));
             */
 
@@ -56,8 +57,9 @@ public class TcpServer {
             //回写
             OutputStream output = s.getOutputStream();
             output.write("我去，微软收购抖音?！".getBytes());
-
-
+            input.close();
+            output.close();
+            ss.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

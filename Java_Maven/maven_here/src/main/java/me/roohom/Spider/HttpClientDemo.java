@@ -9,6 +9,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -36,7 +37,6 @@ public class HttpClientDemo {
         HttpPost httpPost = new HttpPost(url);
         httpPost.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36");
         /********************POST请求添加参数*************************/
-
         List<BasicNameValuePair> list = new ArrayList();
         list.add(new BasicNameValuePair("username", "zs"));
         list.add(new BasicNameValuePair("userpwd", "123123"));
@@ -73,7 +73,7 @@ public class HttpClientDemo {
     @Test
     public void testHttpGet() {
         //初始化URL
-        String url = "http://www.itcast.cn";
+        String url = "https://fanyi.baidu.com/";
         //创建httpclient对象
         CloseableHttpClient httpClient = HttpClients.createDefault();
         //使用httpclient对象进行get请求
@@ -95,6 +95,8 @@ public class HttpClientDemo {
             HttpEntity entity = rsp.getEntity();
             //如果响应的是非文本数据就应该使用字节流
             //如果接收的是文本类型，可以直接使用:工具类EntityUtils
+//            String html = EntityUtils.toString(entity,"utf8");
+//            System.out.println(html);
             InputStream content = entity.getContent();
             int len = -1;
             byte[] buf = new byte[1024];
