@@ -625,6 +625,12 @@ group by a.s_id, a.c_id, a.s_score
 HAVING COUNT(b.s_id) < 3
 ORDER BY a.c_id, a.s_score DESC;
 
+-- 类似于第42题，高级简化写法
+select a.s_id, a.c_id, a.s_score
+from score as a
+where (select count(1) from score as b where b.c_id = a.c_id and b.s_score > a.s_score) < 3
+order by a.c_id;
+
 -- 解法一 分别按照课程查成绩前三的，再把表拼接，方法愚笨
 (select *
  from score as s
@@ -651,7 +657,7 @@ from score as a
                    on a.c_id = b.c_id and b.s_score > a.s_score
 group by a.c_id, a.s_id, a.s_score
 having count(b.s_score) < 3
-order by a.c_id,a.s_score desc;
+order by a.c_id, a.s_score desc;
 ~~~
 
 
@@ -776,5 +782,286 @@ from student as a
          left join Score s on a.s_id = S.s_id
          left join Course c on s.c_id = C.c_id
 group by a.s_id;
+~~~
+
+
+
+-- 36、查询任何一门课程成绩在70分以上的姓名、课程名称和分数；
+
+~~~mysql
+-- 36、查询任何一门课程成绩在70分以上的姓名、课程名称和分数；
+-- 先查出学生成绩在70分以上的课程和成绩
+select *
+from score as s
+where s.s_score >= 70;
+
+select b.s_name,
+       sum(case when c.c_name = '语文' then a.s_score end) as '语文',
+       sum(case when c.c_name = '数学' then a.s_score end) as '数学',
+       sum(case when c.c_name = '英语' then a.s_score end) as '英语'
+from (select *
+      from score as s
+      where s.s_score >= 70) as a
+         left join student as b on a.s_id = b.s_id
+         left join course as c on a.c_id = c.c_id
+group by b.s_name;
+~~~
+
+
+
+-- 37、查询不及格的课程
+
+~~~mysql
+-- 37、查询不及格的课程
+select s.s_id, c.c_name
+from score as s
+         left join Course C on s.c_id = C.c_id
+where s.s_score < 60;
+~~~
+
+
+
+-- 38、查询课程编号为01且课程成绩在80分以上的学生的学号和姓名； 
+
+~~~mysql
+-- 38、查询课程编号为01且课程成绩在80分以上的学生的学号和姓名；
+select s2.s_id, s2.s_name
+from score as s
+         left join student s2 on s.s_id = s2.s_id
+where s.c_id = '01'
+  and s.s_score >= 80;
+~~~
+
+
+
+-- 39、求每门课程的学生人数
+
+~~~mysql
+-- 39、求每门课程的学生人数
+select s.c_id, count(s.s_id) as '学生人数'
+from score as s
+group by s.c_id
+~~~
+
+
+
+-- 40、查询选修"张三"老师所授课程的学生中，成绩最高的学生信息及其成绩
+
+~~~mysql
+-- 40、查询选修"张三"老师所授课程的学生中，成绩最高的学生信息及其成绩
+-- 根据课程分数找出学生id来查询学生信息
+select s2.*, n.s_score
+from score as n
+         left join student s2 on n.s_id = s2.s_id
+where n.s_score = (
+    select max(s.s_score) as max_score
+    from score as s
+    where s.c_id = (
+        -- 查询老师所教的课程id
+        select c.c_id
+        from course as c
+        where c.t_id = (
+            -- 查询老师的id
+            select t.t_id
+            from teacher as t
+            where t.t_name = '张三')));
+
+~~~
+
+
+
+-- 41、查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩
+
+~~~mysql
+-- 41、查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩
+select a.s_id, b.c_id, b.s_score
+from score as a,
+     score as b
+where a.s_score = b.s_score
+  and a.c_id != b.c_id
+  and a.s_id = b.s_id
+group by a.s_id, b.c_id, b.s_score;
+~~~
+
+-- 42、查询每门功成绩最好的前两名
+
+~~~mysql
+-- 42、查询每门功成绩最好的前两名
+-- 方法一:较为愚笨 按科目查询之后再拼接
+(select s.*
+ from score as s
+ where s.c_id = '01'
+ group by s.c_id, s.s_id
+ order by s.s_score desc
+ limit 0,2)
+union all
+(select s.*
+ from score as s
+ where s.c_id = '02'
+ group by s.c_id, s.s_id
+ order by s.s_score desc
+ limit 0,2)
+union all
+(select s.*
+ from score as s
+ where s.c_id = '03'
+ group by s.c_id, s.s_id
+ order by s.s_score desc
+ limit 0,2);
+
+-- 类似于第25题写法，还可以再简化
+select a.s_id, a.c_id, a.s_score
+from score as a
+         left join score b on a.c_id = b.c_id and b.s_score > a.s_score
+group by a.c_id, a.s_id, a.s_score
+having count(b.s_score) < 2
+order by a.c_id, a.s_score desc;
+
+-- 参考答案: 牛逼写法
+select a.s_id, a.c_id, a.s_score
+from score a
+where (select COUNT(1) from score b where b.c_id = a.c_id and b.s_score >= a.s_score) <= 2
+ORDER BY a.c_id;
+
+~~~
+
+
+
+-- 43、统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列
+
+~~~mysql
+-- 43、统计每门课程的学生选修人数（超过5人的课程才统计）。要求输出课程号和
+-- 选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列
+select s.c_id, count(s.s_id) as cnt
+from score as s
+group by s.c_id
+having cnt > 5
+order by cnt desc, c_id asc;
+~~~
+
+
+
+-- 44、检索至少选修两门课程的学生学号
+
+~~~mysql
+-- 44、检索至少选修两门课程的学生学号
+select s.s_id,count(s.s_id)
+from score as s
+group by s.s_id
+having count(s.c_id) >= 2;
+~~~
+
+
+
+-- 45、查询选修了全部课程的学生信息
+
+~~~mysql
+-- 45、查询选修了全部课程的学生信息
+# 方法一:
+select s2.*
+from score as s
+         left join student s2 on s.s_id = s2.s_id
+group by s.s_id
+having count(s.c_id) = (
+    select COUNT(*)
+    from course);
+# 方法二:
+select *
+from student as s
+where s.s_id in
+      (
+          select s2.s_id
+          from score as s2
+          group by s2.s_id
+          having count(s2.c_id) >= (select count(*) from course)
+      )
+
+~~~
+
+
+
+-- 46、查询各学生的年龄
+-- 按照出生日期来算，当前月日 < 出生年月的月日则，年龄减一
+
+> 关于MySQL日期计算 [点我](https://www.cnblogs.com/jianmingyuan/p/10910222.html)
+
+> 关于truncate()函数 [点我](https://www.cnblogs.com/wudage/p/7524387.html)
+
+~~~mysql
+-- 46、查询各学生的年龄
+-- 按照出生日期来算，当前月日 < 出生年月的月日则，年龄减一
+
+-- 方法一:
+-- truncate(x,y)函数将对小数末尾进行舍去，没有四舍五入
+-- str_to_date(date,format)将对字符串日期进行格式化
+select s.s_id,
+       case
+           when str_to_date(now(), '%m-%d') < str_to_date(s.s_birth, '%m-%d') then
+                   truncate(datediff(str_to_date(now(), '%Y-%m-%d'), str_to_date(s.s_birth, '%Y-%m-%d')) / 365, 0) - 1
+           else
+               truncate(datediff(str_to_date(now(), '%Y-%m-%d'), str_to_date(s.s_birth, '%Y-%m-%d')) / 365, 0) end
+from student as s
+group by s.s_id;
+
+-- 方法二:
+select s_birth,
+       (DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(s_birth, '%Y') -
+        (case when DATE_FORMAT(NOW(), '%m%d') > DATE_FORMAT(s_birth, '%m%d') then 0 else 1 end)) as age
+from student;
+~~~
+
+
+
+-- 47、查询本周过生日的学生
+
+~~~mysql
+-- 47、查询本周过生日的学生
+
+# 将所有同学的生日日期转化为对应的月日格式再与本周的周一和周日进行比较
+# 该月日比周一大，比周日小
+select s.*
+from student as s
+where date_format(s.s_birth, '%m-%d') >
+      date_format((select subdate(curdate(), date_format(curdate(), '%w') - 1)), '%m-%d')
+  and date_format((select subdate(curdate(), date_format(curdate(), '%w') - 7)), '%m-%d') >
+      date_format(s.s_birth, '%m-%d') ;
+~~~
+
+
+
+-- 48、查询下周过生日的学生
+
+~~~mysql
+-- 48、查询下周过生日的学生
+
+select s.*
+from student as s
+where date_format(s.s_birth, '%m-%d') >
+      date_format((select subdate(curdate()+7, date_format(curdate()+7, '%w') - 1)), '%m-%d')
+  and date_format((select subdate(curdate()+7, date_format(curdate()+7, '%w') - 7)), '%m-%d') >
+      date_format(s.s_birth, '%m-%d') ;
+~~~
+
+
+
+-- 49、查询本月过生日的学生
+
+~~~mysql
+-- 49、查询本月过生日的学生
+-- 生日在本月月初和月末之间 也就是生日的月份与本月的月份相同
+select s.*
+from student as s
+where date_format(s.s_birth, '%m')= date_format(curdate(),'%m');
+~~~
+
+
+
+-- 50、查询下月过生日的学生
+
+~~~mysql
+-- 50、查询下月过生日的学生
+select s.*
+from student as s
+where date_format(s.s_birth, '%m') = date_format(curdate(), '%m') + 1;
 ~~~
 
